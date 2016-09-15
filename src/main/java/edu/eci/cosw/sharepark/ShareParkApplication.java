@@ -1,4 +1,4 @@
-package edu.eci.cosw.sharepark.run;
+package edu.eci.cosw.sharepark;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

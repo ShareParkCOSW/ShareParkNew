@@ -2,13 +2,24 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
+    'ngRoute',
+    'myApp.view1',
+    'myApp.view2',
+    'myApp.loginView',
+    'myApp.version'
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-
-  $routeProvider.otherwise({redirectTo: '/view1'});
+config(['$locationProvider','$httpProvider', '$routeProvider', function($locationProvider, $httpProvider, $routeProvider) {
+    $locationProvider.hashPrefix('!');
+    $routeProvider.otherwise({redirectTo: '/loginView'});
+    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+}])
+.controller('LogoutCtrl', ['$rootScope', '$scope', '$http' , '$location',function($rootScope, $scope, $http , $location) {
+               $scope.logout = function () {
+                               $http.post('/logout', {}).success(function () {
+                                   $rootScope.authenticated = false;
+                                   $location.path("/");
+                               }).error(function (data) {
+                                   $rootScope.authenticated = false;
+                               });
+                           };
 }]);
