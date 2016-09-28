@@ -51,7 +51,9 @@ public class ShareParkApplication {
 					.logout().logoutSuccessUrl("/")
 					.and().csrf()
 					.csrfTokenRepository(csrfTokenRepository()).and()
-					.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
+					.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
+					.formLogin()
+					.loginPage("/app/index.html");
 		}
 
 		private OncePerRequestFilter csrfHeaderFilter() {
