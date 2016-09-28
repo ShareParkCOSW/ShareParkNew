@@ -15,6 +15,7 @@ public class User {
     private Integer id=null;
     private String email=null;
     private String address=null;
+    private Integer phone=null;
     //Por ahora, la contraseña del usuario sera una propiedad de si mismo:
     private String password=null;
     private List<CreditCard> creditCards=new ArrayList<>();
@@ -29,6 +30,14 @@ public class User {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
     }
 
     public void setLastName(String lastName) {
