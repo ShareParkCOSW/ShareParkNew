@@ -46,7 +46,7 @@ public class ShareParkApplication {
 					.httpBasic()
 					.and()
 					.authorizeRequests()
-					.antMatchers("/app/**","/logout","/login").permitAll()
+					.antMatchers("/app/**","/logout","/login","/usuarios/**").permitAll()
 					.anyRequest().authenticated().and()
 					.logout().logoutSuccessUrl("/")
 					.and().csrf()
