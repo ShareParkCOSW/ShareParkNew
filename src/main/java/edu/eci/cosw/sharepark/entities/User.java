@@ -19,6 +19,7 @@ public class User {
     //Por ahora, la contraseña del usuario sera una propiedad de si mismo:
     private String password=null;
     private List<CreditCard> creditCards=new ArrayList<>();
+    private List<Vehicle> vehicles=new ArrayList<Vehicle>();
 
     public String getFirstName() {
         return firstName;

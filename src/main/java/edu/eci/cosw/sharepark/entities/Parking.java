@@ -1,5 +1,6 @@
 package edu.eci.cosw.sharepark.entities;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -10,11 +11,18 @@ public class Parking {
     private Integer ownerId=null;
     private boolean covert=false;
     private boolean home=false;
-    private ArrayList<AvailabilityDay> schedule=new ArrayList<AvailabilityDay>();
+    private Float height=null; 
+    private Float width=null;
+    private Float length=null;
+    private boolean available=false;
+    private Timestamp serviceStart=null;
+    private Timestamp availableFinish=null;
     private Integer costMinute=null;
-    private String location=null;
+    private Float x=null;
+    private Float y=null;
+    private String address=null;
     private Integer stratum=null;
-    private String foto=null;
+    private String picture=null;
 
     public Integer getOwnerId() {
         return ownerId;
@@ -36,12 +44,28 @@ public class Parking {
         this.home = home;
     }
 
-    public ArrayList<AvailabilityDay> getSchedule() {
-        return schedule;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setSchedule(ArrayList<AvailabilityDay> schedule) {
-        this.schedule = schedule;
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public Timestamp getServiceStart() {
+        return serviceStart;
+    }
+
+    public void setServiceStart(Timestamp serviceStart) {
+        this.serviceStart = serviceStart;
+    }
+
+    public Timestamp getAvailableFinish() {
+        return availableFinish;
+    }
+
+    public void setAvailableFinish(Timestamp availableFinish) {
+        this.availableFinish = availableFinish;
     }
 
     public Integer getCostMinute() {
@@ -52,12 +76,52 @@ public class Parking {
         this.costMinute = costMinute;
     }
 
-    public String getLocation() {
-        return location;
+    public Float getHeight() {
+        return height;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setHeight(Float height) {
+        this.height = height;
+    }
+
+    public Float getWidth() {
+        return width;
+    }
+
+    public void setWidth(Float width) {
+        this.width = width;
+    }
+
+    public Float getLength() {
+        return length;
+    }
+
+    public void setLength(Float length) {
+        this.length = length;
+    }
+
+    public Float getX() {
+        return x;
+    }
+
+    public void setX(Float x) {
+        this.x = x;
+    }
+
+    public Float getY() {
+        return y;
+    }
+
+    public void setY(Float y) {
+        this.y = y;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getStratum() {
@@ -68,11 +132,13 @@ public class Parking {
         this.stratum = stratum;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
+
+   
 }
