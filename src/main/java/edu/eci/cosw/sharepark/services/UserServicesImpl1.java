@@ -4,10 +4,12 @@ import edu.eci.cosw.sharepark.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Andrés Felipe on 12/09/2016.
  */
+@Service
 public class UserServicesImpl1 implements UserServices{
     private List<User> users=new ArrayList<>();
     @Override
@@ -30,5 +32,15 @@ public class UserServicesImpl1 implements UserServices{
             }
         }
         return ans;
+    }
+
+    @Override
+    public void updateUser(User u) {
+        for (User user : users) {
+            if(user.getId()==u.getId()){
+                user=u;
+                break;
+            }
+        }
     }
 }

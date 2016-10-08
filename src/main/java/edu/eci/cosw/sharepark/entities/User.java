@@ -2,10 +2,20 @@ package edu.eci.cosw.sharepark.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * Created by Andrés Felipe on 12/09/2016.
  */
+@Entity
+@Table(name = "users")
 public class User {
     public User() {
     }
@@ -19,20 +29,23 @@ public class User {
     //Por ahora, la contraseña del usuario sera una propiedad de si mismo:
     private String password=null;
     private List<CreditCard> creditCards=new ArrayList<>();
-    private List<Vehicle> vehicles=new ArrayList<Vehicle>();
-
+    private List<Vehicle> vehicles=new ArrayList<>();
+    
+    @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
     }
-
+    
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    
+    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
 
+    @Column(name = "phone")
     public Integer getPhone() {
         return phone;
     }
@@ -44,7 +57,9 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    
+    @Id
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -52,7 +67,8 @@ public class User {
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -60,7 +76,8 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
+    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -68,7 +85,9 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
-
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(table = "credit_cards",name = "owner_id", nullable = false)
     public List<CreditCard> getCreditCards() {
         return creditCards;
     }
@@ -76,11 +95,13 @@ public class User {
     public void setCreditCards(List<CreditCard> creditCards) {
         this.creditCards = creditCards;
     }
-
+    
+    
     public void addCreditCard(CreditCard cr){
         this.creditCards.add(cr);
     }
-
+    
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -88,4 +109,16 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(table = "vehicles",name = "owner_id", nullable = false)
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
+    
+    
 }
