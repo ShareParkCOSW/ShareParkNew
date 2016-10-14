@@ -8,6 +8,8 @@ angular.module('myApp', [
     'myApp.loginView',
     'myApp.viewTC',
     'myApp.viewRP',
+    'myApp.viewCP',
+    //'services.parking',
     'myApp.version'
 ]).
 config(['$locationProvider','$httpProvider', '$routeProvider', function($locationProvider, $httpProvider, $routeProvider) {
