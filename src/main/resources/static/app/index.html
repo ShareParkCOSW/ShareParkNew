@@ -16,12 +16,12 @@
 </head>
 <body>
 <ul class="menu">
-  <li ng-show="!authenticated"><a href="#!/loginView">Login</a></li>
-  <li ng-show="authenticated"><a href="#!/view2">Registro de Usuarios</a></li>
+  <li ng-show="!authenticated"><a href="#!/loginView">Iniciar Sesion</a></li>
+  <li ng-show="!authenticated"><a href="#!/view2">Registro de Usuarios</a></li>
   <li ng-show="authenticated"><a href="#!/viewTC">Registro de tarjeta de Credito</a></li>
   <li ng-show="authenticated"><a href="#!/viewRP">Registro de Estacionamiento</a></li>
   <li ng-show="authenticated"><a href="#!/viewCP">Consulta de estacionamientos</a></li>
-  <li ng-show="authenticated"><a ng-controller="LogoutCtrl" ng-click="logout()">Logout</a></li>
+  <li ng-show="authenticated"><a ng-controller="LogoutCtrl" ng-click="logout()">Cerrar Sesion</a></li>
 </ul>
 
 <!--[if lt IE 7]>
