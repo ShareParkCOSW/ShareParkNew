@@ -17,11 +17,10 @@
 <body>
 <ul class="menu">
   <li ng-show="!authenticated"><a href="#!/loginView">Login</a></li>
-  <li ng-show="authenticated"><a href="#!/view1">view1</a></li>
-  <li ng-show="authenticated"><a href="#!/view2">view2</a></li>
-  <li ng-show="authenticated"><a href="#!/viewTC">viewTC</a></li>
-  <li ng-show="authenticated"><a href="#!/viewRP">viewRP</a></li>
-  <li ng-show="authenticated"><a href="#!/viewCP">viewCP</a></li>
+  <li ng-show="authenticated"><a href="#!/view2">Registro de Usuarios</a></li>
+  <li ng-show="authenticated"><a href="#!/viewTC">Registro de tarjeta de Credito</a></li>
+  <li ng-show="authenticated"><a href="#!/viewRP">Registro de Estacionamiento</a></li>
+  <li ng-show="authenticated"><a href="#!/viewCP">Consulta de estacionamientos</a></li>
   <li ng-show="authenticated"><a ng-controller="LogoutCtrl" ng-click="logout()">Logout</a></li>
 </ul>
 
@@ -41,11 +40,11 @@
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="app.js"></script>
 <script src="loginView/loginView.js"></script>
-<script src="view1/view1.js"></script>
 <script src="view2/view2.js"></script>
 <script src="viewTC/viewTC.js"></script>
 <script src="viewRP/viewRP.js"></script>
 <script src="viewCP/viewCP.js"></script>
+<script src="Services/userFactory.js"></script>
 <!--<script src="services/services.js"></script> -->
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
