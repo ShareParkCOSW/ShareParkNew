@@ -4,6 +4,11 @@ import edu.eci.cosw.sharepark.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +16,18 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServicesImpl1 implements UserServices{
+    public static SessionFactory getSessionFactory() {
+        // loads configuration and mappings
+        Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+        ServiceRegistry serviceRegistry
+                = new StandardServiceRegistryBuilder()
+                .applySettings(configuration.getProperties()).build();
+
+        // builds a session factory from the service registry
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        return sessionFactory;
+    }
+
     private List<User> users=new ArrayList<>();
     @Override
     public List<User> getUsers() {

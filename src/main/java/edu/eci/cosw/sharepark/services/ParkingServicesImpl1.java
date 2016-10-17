@@ -1,6 +1,10 @@
 package edu.eci.cosw.sharepark.services;
 
 import edu.eci.cosw.sharepark.entities.Parking;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +13,17 @@ import java.util.List;
  * Created by alejandra on 27/09/16.
  */
 public class ParkingServicesImpl1 implements ParkingServices {
+    public static SessionFactory getSessionFactory() {
+        // loads configuration and mappings
+        Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+        ServiceRegistry serviceRegistry
+                = new StandardServiceRegistryBuilder()
+                .applySettings(configuration.getProperties()).build();
+
+        // builds a session factory from the service registry
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        return sessionFactory;
+    }
 
     private List<Parking> parkings=new ArrayList<>();
 
