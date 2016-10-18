@@ -2,6 +2,7 @@ package edu.eci.cosw.sharepark;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -24,6 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @SpringBootApplication
+//@EnableJpaRepositories("edu.eci.cosw.sharepark.repositories")
+//@EntityScan("edu.eci.cosw.sharepark.entities")
 public class ShareParkApplication {
 
 	public static void main(String[] args) {

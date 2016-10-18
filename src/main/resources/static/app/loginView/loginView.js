@@ -41,7 +41,7 @@ angular.module('myApp.loginView', ['ngRoute'])
             } else {
                 $location.path("/loginView");
                 $scope.error = true;
-                alert("autentication failed ");
+                alert("Autenticación Fallida");
             }
         });
     };

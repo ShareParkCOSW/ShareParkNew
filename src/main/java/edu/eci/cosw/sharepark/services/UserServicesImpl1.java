@@ -16,17 +16,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServicesImpl1 implements UserServices{
-    public static SessionFactory getSessionFactory() {
-        // loads configuration and mappings
-        Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
-        ServiceRegistry serviceRegistry
-                = new StandardServiceRegistryBuilder()
-                .applySettings(configuration.getProperties()).build();
 
-        // builds a session factory from the service registry
-        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        return sessionFactory;
-    }
 
     private List<User> users=new ArrayList<>();
     @Override
