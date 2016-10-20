@@ -29,8 +29,12 @@ public class User {
     //Por ahora, la contraseña del usuario sera una propiedad de si mismo:
     private String password=null;
     private List<CreditCard> creditCards=new ArrayList<>();
+    private List<Calification> calificationsGive=new ArrayList<>();
+    private List<Calification> calificationsTake=new ArrayList<>();
     private List<Vehicle> vehicles=new ArrayList<>();
-    
+    private List<Request> requestsGive=new ArrayList<>();
+    private List<Request> requestsTake=new ArrayList<>();
+
     @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
@@ -95,8 +99,47 @@ public class User {
     public void setCreditCards(List<CreditCard> creditCards) {
         this.creditCards = creditCards;
     }
-    
-    
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(table = "califications", name = "giver_id", nullable = false)
+    public List<Calification> getCalificationsGive() {
+        return calificationsGive;
+    }
+
+    public void setCalificationsGive(List<Calification> calificationsGive) {
+        this.calificationsGive = calificationsGive;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(table = "califications", name = "taker_id", nullable = false)
+    public List<Calification> getCalificationsTake() {
+        return calificationsTake;
+    }
+
+    public void setCalificationsTake(List<Calification> calificationsTake) {
+        this.calificationsTake = calificationsTake;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(table = "requests", name = "giver_id", nullable = false)
+    public List<Request> getRequestsGive() {
+        return requestsGive;
+    }
+
+    public void setRequestsGive(List<Request> requestsGive) {
+        this.requestsGive = requestsGive;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(table = "requests", name = "taker_id", nullable = false)
+    public List<Request> getRequestsTake() {
+        return requestsTake;
+    }
+
+    public void setRequestsTake(List<Request> requestsTake) {
+        this.requestsTake = requestsTake;
+    }
+
     public void addCreditCard(CreditCard cr){
         this.creditCards.add(cr);
     }

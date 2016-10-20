@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by alejandra on 27/09/16.
  */
+
 public class Parking {
 
     private Integer ownerId=null;
