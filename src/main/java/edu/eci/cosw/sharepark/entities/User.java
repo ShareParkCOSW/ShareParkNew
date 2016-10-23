@@ -2,14 +2,7 @@ package edu.eci.cosw.sharepark.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Andrés Felipe on 12/09/2016.
@@ -34,6 +27,18 @@ public class User {
     private List<Vehicle> vehicles=new ArrayList<>();
     private List<Request> requestsGive=new ArrayList<>();
     private List<Request> requestsTake=new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "owner_id", targetEntity = Parking.class)
+    public List<Parking> getParkings() {
+        return parkings;
+    }
+
+    public void setParkings(List<Parking> parkings) {
+        this.parkings = parkings;
+    }
+
+    private List<Parking> parkings=new ArrayList<>();
+
 
     @Column(name = "first_name")
     public String getFirstName() {
@@ -89,9 +94,8 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "credit_cards",name = "owner_id", nullable = false)
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "owner_id", targetEntity = CreditCard.class)
     public List<CreditCard> getCreditCards() {
         return creditCards;
     }
@@ -100,8 +104,7 @@ public class User {
         this.creditCards = creditCards;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "califications", name = "giver_id", nullable = false)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "giver_id", targetEntity = Calification.class)
     public List<Calification> getCalificationsGive() {
         return calificationsGive;
     }
@@ -110,8 +113,8 @@ public class User {
         this.calificationsGive = calificationsGive;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "califications", name = "taker_id", nullable = false)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "taker_id", targetEntity = Calification.class)
+
     public List<Calification> getCalificationsTake() {
         return calificationsTake;
     }
@@ -120,8 +123,8 @@ public class User {
         this.calificationsTake = calificationsTake;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "requests", name = "giver_id", nullable = false)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "giver_id", targetEntity = Request.class)
+
     public List<Request> getRequestsGive() {
         return requestsGive;
     }
@@ -130,8 +133,7 @@ public class User {
         this.requestsGive = requestsGive;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "requests", name = "taker_id", nullable = false)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "taker_id", targetEntity = Request.class)
     public List<Request> getRequestsTake() {
         return requestsTake;
     }
@@ -143,7 +145,7 @@ public class User {
     public void addCreditCard(CreditCard cr){
         this.creditCards.add(cr);
     }
-    
+
     @Column(name = "password")
     public String getPassword() {
         return password;
@@ -152,9 +154,9 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "vehicles",name = "owner_id", nullable = false)
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "owner_id", targetEntity = Vehicle.class)
+
     public List<Vehicle> getVehicles() {
         return vehicles;
     }
@@ -162,6 +164,5 @@ public class User {
     public void setVehicles(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
-    
-    
+
 }

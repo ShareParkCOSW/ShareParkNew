@@ -16,7 +16,17 @@ public class CreditCard {
     private Integer cardNumber;
     private String expirationDate;
     private Integer cvcCode;
-    
+    private Integer owner_id;
+
+    @Column(name = "owner_id")
+    public Integer getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(Integer owner_id) {
+        this.owner_id = owner_id;
+    }
+
     @Id
     @Column(name = "card_number")
     public Integer getCardNumber() {

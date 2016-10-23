@@ -28,8 +28,8 @@ public class ParkingController {
     }
 
     @RequestMapping(value = "/{iduser}", method = RequestMethod.GET)
-    public Parking getParking(@PathVariable("iduser") Integer iduser){
-        return services.getParkingByUserId(iduser);
+    public List<Parking> getParkings(@PathVariable("iduser") Integer iduser){
+        return services.getParkingsByUserId(iduser);
     }
 
     @RequestMapping(method = RequestMethod.POST)

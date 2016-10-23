@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,9 @@ import java.util.List;
  * Created by alejandra on 27/09/16.
  */
 public class ParkingServicesImpl1 implements ParkingServices {
+    @Autowired
+    UserServices us;
+
     public static SessionFactory getSessionFactory() {
         // loads configuration and mappings
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
@@ -38,14 +42,7 @@ public class ParkingServicesImpl1 implements ParkingServices {
     }
 
     @Override
-    public Parking getParkingByUserId(Integer userId) {
-        Parking ans=null;
-        for (Parking u:parkings) {
-            if(u.getOwnerId()==userId){
-                ans=u;
-                break;
-            }
-        }
-        return ans;
+    public List<Parking> getParkingsByUserId(Integer userId) {
+        return us.getUser(userId).getParkings();
     }
 }

@@ -22,14 +22,23 @@ public class Vehicle {
     private String model=null;
     private String color=null;
     private HashMap<String,Boolean> vehicleType= new HashMap<String, Boolean>();
+    private Integer owner_id;
 
-    private Integer ownerid=null;
+    @Column(name = "owner_id")
+    public Integer getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(Integer owner_id) {
+        this.owner_id = owner_id;
+    }
 
     public Vehicle() {
         vehicleType.put("Automovil", Boolean.FALSE);vehicleType.put("Campero", Boolean.FALSE);vehicleType.put("Camioneta o Pickup", Boolean.FALSE);
         vehicleType.put("Van", Boolean.FALSE);vehicleType.put("Mini van", Boolean.FALSE);
     }
 
+    @Id
     @Column(name = "plate")
     public String getPlate() {
         return plate;
@@ -66,15 +75,6 @@ public class Vehicle {
         this.color = color;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "users",name = "id", nullable = false)
-    public Integer getOwnerid() {
-        return ownerid;
-    }
-
-    public void setOwnerid(Integer ownerid) {
-        this.ownerid = ownerid;
-    }
 
     @Column(name="type_vehicle")
     public HashMap<String, Boolean> getVehicleType() {

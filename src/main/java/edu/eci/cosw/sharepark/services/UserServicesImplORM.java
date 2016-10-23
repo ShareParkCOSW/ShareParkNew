@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.NotYetImplementedException;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,10 @@ import java.util.List;
 /**
  * Created by Andrés Felipe on 18/10/2016.
  */
-//@Service
-/**
+@Service
+
 public class UserServicesImplORM implements UserServices{
-    @Autowired
-    UsersRepository repo;
+
     public static SessionFactory getSessionFactory() {
         // loads configuration and mappings
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
@@ -35,7 +35,8 @@ public class UserServicesImplORM implements UserServices{
 
     @Override
     public List<User> getUsers() {
-        return repo.findAll();
+        //TODO
+        throw new NotYetImplementedException();
     }
 
     @Override
@@ -51,7 +52,8 @@ public class UserServicesImplORM implements UserServices{
 
     @Override
     public User getUser(Integer id) {
-        return repo.findOne(id);
+        //TODO
+        throw new NotYetImplementedException();
     }
 
     @Override
@@ -65,4 +67,3 @@ public class UserServicesImplORM implements UserServices{
         sf.close();
     }
 }
-*/

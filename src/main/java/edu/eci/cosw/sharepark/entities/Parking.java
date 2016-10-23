@@ -2,18 +2,17 @@ package edu.eci.cosw.sharepark.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 
 /**
  * Created by alejandra on 27/09/16.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "parkings")
 public class Parking {
     public Parking() {
     }
 
-    private Integer ownerId=null;
+    private Integer owner_id=null;
     private boolean covert=false;
     private boolean home=false;
     private Float height=null; 
@@ -29,14 +28,13 @@ public class Parking {
     private Integer stratum=null;
     private String picture=null;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "users",name = "id", nullable = false)
-    public Integer getOwnerId() {
-        return ownerId;
+    @Column(name = "owner_id")
+    public Integer getOwner_id() {
+        return owner_id;
     }
 
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public void setOwner_id(Integer ownerId) {
+        this.owner_id = ownerId;
     }
 
     @Column(name = "covert")

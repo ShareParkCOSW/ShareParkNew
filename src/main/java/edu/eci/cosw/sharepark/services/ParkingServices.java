@@ -11,5 +11,5 @@ public interface ParkingServices {
 
     public List<Parking> getParkings();
     public void addParking(Parking p);
-    public Parking getParkingByUserId(Integer id);
+    public List<Parking> getParkingsByUserId(Integer id);
 }
