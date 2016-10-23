@@ -2,7 +2,6 @@ package edu.eci.cosw.sharepark.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 
 /**
  * Created by alejandra on 27/09/16.
@@ -29,8 +28,9 @@ public class Parking {
     private Integer stratum=null;
     private String picture=null;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(table = "users",name = "id", nullable = false)
+    /*@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(table = "users",name = "id", nullable = false)*/
+    @Column
     public Integer getOwnerId() {
         return ownerId;
     }

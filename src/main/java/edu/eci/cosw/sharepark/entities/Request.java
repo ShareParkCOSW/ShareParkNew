@@ -1,9 +1,8 @@
 package edu.eci.cosw.sharepark.entities;
 
-import edu.eci.cosw.sharepark.entities.User;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -37,6 +36,7 @@ public class Request {
         this.service_paid = service_paid;
     }
 
+    @Id
     @Column(name = "id")
     public Integer getId() {
         return id;

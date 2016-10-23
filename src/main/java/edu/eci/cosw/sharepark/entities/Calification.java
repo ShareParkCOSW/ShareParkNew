@@ -1,9 +1,8 @@
 package edu.eci.cosw.sharepark.entities;
 
-import edu.eci.cosw.sharepark.entities.User;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +17,7 @@ public class Calification {
     private Integer id=null;
     private Integer stars=null;
 
+    @Id
     @Column(name = "id")
     public Integer getId() {
         return id;

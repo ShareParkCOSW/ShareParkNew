@@ -30,6 +30,7 @@ public class Vehicle {
         vehicleType.put("Van", Boolean.FALSE);vehicleType.put("Mini van", Boolean.FALSE);
     }
 
+    @Id
     @Column(name = "plate")
     public String getPlate() {
         return plate;
@@ -66,7 +67,7 @@ public class Vehicle {
         this.color = color;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(table = "users",name = "id", nullable = false)
     public Integer getOwnerid() {
         return ownerid;
