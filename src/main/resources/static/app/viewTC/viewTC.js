@@ -9,41 +9,30 @@ angular.module('myApp.viewTC', ['ngRoute'])
   });
 }])
 
-.controller('ViewTCCtrl', ['$scope','infoCCs', function($scope, infoCCs) {
-
-    $scope.numTC="";
+.controller('ViewTCCtrl', ['$scope','$rootScope','$http','$resource','infoCCs', function($scope, $rootScope, $http, $resource, infoCCs) {
+    $scope.newCard=false;
+    $scope.numTC=null;
     $scope.fechaVen="";
     $scope.cvv="";
+    $scope.ccN={"cardNumber":null,"expirationDate":null,"cvcCode":null};
 
 
-    $scope.agregarFabrica = function(){
+    $scope.addCreditCard = function(){
 
-        var newitem={"numTC":$scope.numTC,"fechaVen":$scope.fechaVen,"cvv":$scope,cvv};
+        infoCCs.get({idCC:""+$scope.numTC}, function(data){
+                $scope.ccN=data;
+                console.info($scope.ccN);
+                });
+        if ($scope.ccN.cardNumber==null){
+            var newitem={"cardNumber":$scope.numTC,"expirationDate":$scope.fechaVen,"cvcCode":$scope,cvv};
+            infoCCs.save(newitem,function(){});
+        }else{
+            console.info("La tarjeta de crédito ya existe!!!");
+            $scope.newCard=true;
+            $rootScope.valide=false;
+        }
+        };
 
-        infoCCs.save(newitem,function(){
-            console.info("saved   "+ newitem);
-            });
-
-            //service1.addTodo({propiedad1:$scope.propiedad1,propiedad2:$scope.propiedad2});
-            $scope.description="";
-            $scope.priority="";
-            //alert("Sent!!");
-            }
-
-
-
-
-    /*$scope.saveCCInfo = function() {
-    		var numTC = $scope.numTC;
-    		var fechaVen = $scope.fechaVen;
-    		var cvv = $scope.cvv;
-    		var infoCCs = [
-    			numTC,
-    			fechaVen,
-    			cvv
-    		];
-    		fabrica1.addTodo(infoCCs);
-    	}*/
 
 
 

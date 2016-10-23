@@ -1,13 +1,17 @@
 package edu.eci.cosw.sharepark.entities;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
  * Created by alejandra on 27/09/16.
  */
-
+@Entity
+@Table(name = "users")
 public class Parking {
+    public Parking() {
+    }
 
     private Integer ownerId=null;
     private boolean covert=false;
@@ -25,6 +29,8 @@ public class Parking {
     private Integer stratum=null;
     private String picture=null;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(table = "users",name = "id", nullable = false)
     public Integer getOwnerId() {
         return ownerId;
     }
@@ -33,10 +39,12 @@ public class Parking {
         this.ownerId = ownerId;
     }
 
+    @Column(name = "covert")
     public boolean isCovert() {return covert;}
 
     public void setCovert(boolean covert) {this.covert = covert;}
 
+    @Column(name = "home")
     public boolean isHome() {
         return home;
     }
@@ -45,6 +53,7 @@ public class Parking {
         this.home = home;
     }
 
+    @Column(name = "available")
     public boolean isAvailable() {
         return available;
     }
@@ -53,6 +62,7 @@ public class Parking {
         this.available = available;
     }
 
+    @Column(name = "service_start")
     public Timestamp getServiceStart() {
         return serviceStart;
     }
@@ -61,6 +71,7 @@ public class Parking {
         this.serviceStart = serviceStart;
     }
 
+    @Column(name = "available_finish")
     public Timestamp getAvailableFinish() {
         return availableFinish;
     }
@@ -69,6 +80,7 @@ public class Parking {
         this.availableFinish = availableFinish;
     }
 
+    @Column(name = "cost_minute")
     public Integer getCostMinute() {
         return costMinute;
     }
@@ -77,6 +89,7 @@ public class Parking {
         this.costMinute = costMinute;
     }
 
+    @Column(name = "height")
     public Float getHeight() {
         return height;
     }
@@ -85,6 +98,7 @@ public class Parking {
         this.height = height;
     }
 
+    @Column(name = "width")
     public Float getWidth() {
         return width;
     }
@@ -93,6 +107,7 @@ public class Parking {
         this.width = width;
     }
 
+    @Column(name = "length")
     public Float getLength() {
         return length;
     }
@@ -101,6 +116,7 @@ public class Parking {
         this.length = length;
     }
 
+    @Column(name = "x")
     public Float getX() {
         return x;
     }
@@ -109,6 +125,7 @@ public class Parking {
         this.x = x;
     }
 
+    @Column(name = "y")
     public Float getY() {
         return y;
     }
@@ -117,6 +134,8 @@ public class Parking {
         this.y = y;
     }
 
+    @Id
+    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -125,6 +144,7 @@ public class Parking {
         this.address = address;
     }
 
+    @Column(name = "stratum")
     public Integer getStratum() {
         return stratum;
     }
@@ -133,6 +153,7 @@ public class Parking {
         this.stratum = stratum;
     }
 
+    @Column(name = "picture")
     public String getPicture() {
         return picture;
     }

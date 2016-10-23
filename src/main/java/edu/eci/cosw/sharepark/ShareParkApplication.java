@@ -26,7 +26,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 //@EnableJpaRepositories("edu.eci.cosw.sharepark.repositories")
-//@EntityScan("edu.eci.cosw.sharepark.entities")
+@EntityScan("edu.eci.cosw.sharepark.entities")
 public class ShareParkApplication {
 
 	public static void main(String[] args) {

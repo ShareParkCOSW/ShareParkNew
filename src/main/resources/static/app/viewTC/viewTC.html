@@ -6,19 +6,23 @@
 
     <div class="form-group">
         <label for="numTC">Número de Tarjeta de Crédito:</label> <input type="text"
-                                                       class="form-control" id="numTC" name="numTC"/>
+                                                       class="form-control" id="numTC" name="numTC" ng-model="numTC"/>
     </div>
 
     <div class="form-group">
         <label for="fechaVen">Fecha de Vencimiento:</label> <input type="month"
-                                                       class="form-control" id="fechaVen" name="fechaVen"/>
+                                                       class="form-control" id="fechaVen" name="fechaVen" ng-model="fechaVen"/>
     </div>
 
     <div class="form-group">
         <label for="cvv">CVV:</label> <input type="text"
-                                                       class="form-control" id="cvv" name="cvv" />
+                                                       class="form-control" id="cvv" name="cvv" ng-model="cvv"/>
     </div>
 
 </form>
+    <button ng-click="addCreditCard()"> Registrar Tarjeta de Crédito </button>
+    <div ng-hide="valide&&newUser">
+        <label>La tarjeta de crédito ingresada ya existe!</label>
+    </div>
 
 </div>
