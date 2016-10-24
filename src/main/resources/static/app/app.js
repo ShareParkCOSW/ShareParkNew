@@ -9,7 +9,7 @@ angular.module('myApp', [
     'myApp.viewRP',
     'myApp.viewCP',
     'services.factory',
-    //'services.parking',
+    'services.parking',
     'myApp.version'
 ]).
 config(['$locationProvider','$httpProvider', '$routeProvider', function($locationProvider, $httpProvider, $routeProvider) {

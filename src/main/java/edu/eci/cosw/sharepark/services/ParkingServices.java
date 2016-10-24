@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface ParkingServices {
 
+    public void updateParking(Parking p);
     public List<Parking> getParkings();
     public void addParking(Parking p);
     public List<Parking> getParkingsByUserId(Integer id);

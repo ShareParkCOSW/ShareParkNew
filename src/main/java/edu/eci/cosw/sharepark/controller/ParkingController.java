@@ -3,6 +3,7 @@ package edu.eci.cosw.sharepark.controller;
 import edu.eci.cosw.sharepark.entities.Parking;
 import edu.eci.cosw.sharepark.services.ParkingServices;
 import edu.eci.cosw.sharepark.services.ParkingServicesImpl1;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/parkings")
 public class ParkingController {
-    private ParkingServices services=new ParkingServicesImpl1();
+
+    @Autowired
+    private ParkingServices services;
 
     @RequestMapping(value ="/check", method = RequestMethod.GET)
     public String check(){
@@ -28,7 +31,7 @@ public class ParkingController {
     }
 
     @RequestMapping(value = "/{iduser}", method = RequestMethod.GET)
-    public List<Parking> getParkings(@PathVariable("iduser") Integer iduser){
+    public List<Parking> getParkingsByUserID(@PathVariable("iduser") Integer iduser){
         return services.getParkingsByUserId(iduser);
     }
 

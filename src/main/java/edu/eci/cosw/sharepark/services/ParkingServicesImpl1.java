@@ -14,8 +14,9 @@ import java.util.List;
  * Created by alejandra on 27/09/16.
  */
 public class ParkingServicesImpl1 implements ParkingServices {
+
     @Autowired
-    UserServices us;
+    private UserServices us;
 
     public static SessionFactory getSessionFactory() {
         // loads configuration and mappings
@@ -30,6 +31,16 @@ public class ParkingServicesImpl1 implements ParkingServices {
     }
 
     private List<Parking> parkings=new ArrayList<>();
+
+    @Override
+    public void updateParking(Parking p) {
+        for (Parking park : parkings) {
+            if(park.getAddress().equals(p.getAddress())){
+                park=p;
+                break;
+            }
+        }
+    }
 
     @Override
     public List<Parking> getParkings() {
