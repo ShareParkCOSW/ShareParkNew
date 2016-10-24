@@ -11,10 +11,12 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <property name="use_sql_comments">true</property>
-    <mapping class="edu.edu.eci.cosw.sharepark.entities.CreditCard"/>
-    <mapping class="edu.edu.eci.cosw.sharepark.entities.Parking"/>
-    <mapping class="edu.edu.eci.cosw.sharepark.entities.User"/>
-    <mapping class="edu.edu.eci.cosw.sharepark.entities.Vehicle"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.CreditCard"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.Parking"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.User"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.Vehicle"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.Calification"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.Request"/>
   </session-factory>
     
 </hibernate-configuration>

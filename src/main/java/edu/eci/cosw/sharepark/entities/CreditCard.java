@@ -4,13 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by Andrés Felipe on 12/09/2016.
  */
 @Entity
 @Table(name = "credit_cards")
-public class CreditCard {
+public class CreditCard implements Serializable{
     public CreditCard() {
     }
     private Integer cardNumber;

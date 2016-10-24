@@ -1,6 +1,7 @@
 package edu.eci.cosw.sharepark.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -8,7 +9,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "parkings")
-public class Parking {
+public class Parking implements Serializable{
     public Parking() {
     }
 

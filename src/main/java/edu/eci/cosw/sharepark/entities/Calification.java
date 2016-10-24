@@ -4,13 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by alejandra on 20/10/16.
  */
 @Entity
 @Table(name = "califications")
-public class Calification {
+public class Calification implements Serializable{
     public Calification() {
 
     }

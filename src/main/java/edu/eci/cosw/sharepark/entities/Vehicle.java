@@ -6,6 +6,7 @@
 package edu.eci.cosw.sharepark.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -14,7 +15,7 @@ import java.util.HashMap;
  */
 @Entity
 @Table(name = "vehicles")
-public class Vehicle {
+public class Vehicle implements Serializable{
 
 
     private String plate=null;
@@ -77,12 +78,24 @@ public class Vehicle {
 
 
     @Column(name="type_vehicle")
-    public HashMap<String, Boolean> getVehicleType() {
-        return vehicleType;
+    public String getVehicleType() {
+        String ans=null;
+        for (String s:vehicleType.keySet()) {
+            if(vehicleType.get(s)){
+                ans=s;
+                break;
+            }
+        }
+        return ans;
     }
 
-    public void setVehicleType(HashMap<String, Boolean> vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setVehicleType(String s) {
+        for (String st:vehicleType.keySet()) {
+            if(st.equals(s)){
+                vehicleType.replace(st, Boolean.TRUE);
+                break;
+            }
+        }
     }
 
 }

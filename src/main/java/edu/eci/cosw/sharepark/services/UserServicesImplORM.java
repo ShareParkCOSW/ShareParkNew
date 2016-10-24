@@ -2,6 +2,7 @@
 package edu.eci.cosw.sharepark.services;
 
 import edu.eci.cosw.sharepark.entities.User;
+import org.hibernate.Criteria;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -36,7 +37,15 @@ public class UserServicesImplORM implements UserServices{
     @Override
     public List<User> getUsers() {
         //TODO
-        throw new NotYetImplementedException();
+        SessionFactory sf=getSessionFactory();
+        Session se=sf.openSession();
+        Transaction tx=se.beginTransaction();
+        Criteria criteria = se.createCriteria(User.class);
+        List<User> ans = criteria.list();
+        tx.commit();
+        se.close();
+        sf.close();
+        return ans;
     }
 
     @Override
@@ -52,8 +61,10 @@ public class UserServicesImplORM implements UserServices{
 
     @Override
     public User getUser(Integer id) {
-        //TODO
-        throw new NotYetImplementedException();
+        SessionFactory sf=getSessionFactory();
+        Session se=sf.openSession();
+        Transaction tx=se.beginTransaction();
+        return (User) se.load("edu.eci.cosw.sharepark.entities.User", id);
     }
 
     @Override
