@@ -1,31 +1,34 @@
 <div ng-show="authenticated">
-    <p>Registrar Parqueadero</p>
+    <p>Formulario para registrar parqueadero</p>
 
 
 <form role="form">
 
     <div class="form-group">
-        <label for="ownerId">Identidifación Usuario:</label> <input type="text"
+        <label for="ownerId">Identidifacion Usuario:</label> <br><input type="text"
                                                        class="form-control" id="ownerId" name="ownerId"/>
     </div>
 
     <div class="form-group">
-        <label for="covert">¿El parqueadero es cubierto?:</label> <input type="month"
-                                                       class="form-control" id="covert" name="covert"/>
+        El parqueadero es cubierto?</label> <br>
+		<input type="checkbox" name="covert" value="true">Si<br>
+		<input type="checkbox" name="covert" value="False">No<br>
+                                                       
     </div>
 
     <div class="form-group">
-        <label for="home">¿El parqueadero pertenece a una casa?:</label> <input type="text"
-                                                       class="form-control" id="home" name="home" />
+        <label for="home">El parqueadero pertenece a una casa?</label><br>
+		<input type="checkbox" name="home" value="true">Si<br>
+		<input type="checkbox" name="home" value="False">No<br>
     </div>
 
     <div class="form-group">
-        <label for="height">Altura del parqueadero:</label> <input type="text"
+        <label for="height">Altura del parqueadero:</label> <br> <input type="text"
                                                                         class="form-control" id="height" name="height"/>
     </div>
 
     <div class="form-group">
-        <label for="width">Ancho del parqueadero:</label> <input type="month"
+        <label for="width">Ancho del parqueadero:</label> <br> <input type="text"
                                                                    class="form-control" id="width" name="width"/>
     </div>
 
@@ -35,35 +38,47 @@
     </div>
 
     <div class="form-group">
-        <label for="available">¿Está disponible?:</label> <input type="text"
-                                                                        class="form-control" id="available" name="available"/>
+        <label for="available">Esta disponible?:</label> <br> 
+		<input type="checkbox" name="available" value="true">Si<br>
+		<input type="checkbox" name="available" value="False">No<br>
     </div>
 
     <div class="form-group">
-        <label for="serviceStart">Hora inicio del servicio:</label> <input type="month"
+        <label for="serviceStart">Hora inicio del servicio:</label> <br> <input type="text"
                                                                    class="form-control" id="serviceStart" name="serviceStart"/>
     </div>
 
     <div class="form-group">
-        <label for="availableFinish">Tiempo acabado disponible:</label> <input type="text"
+        <label for="availableFinish">Tiempo acabado disponible:</label> <br> <input type="text"
                                              class="form-control" id="availableFinish" name="availableFinish" />
     </div>
 
     <div class="form-group">
-        <label for="costMinute">Costo del minuto:</label> <input type="text"
+        <label for="costMinute">Costo del minuto:</label> <br> <input type="text"
                                                                         class="form-control" id="costMinute" name="costMinute"/>
     </div>
 
     <div class="form-group">
-        <label for="address">Direccion del parqueadero:</label> <input type="month"
+        <label for="address">Direccion del parqueadero:</label> <br> <input type="month"
                                                                    class="form-control" id="address" name="address"/>
     </div>
 
     <div class="form-group">
-        <label for="stratum">Estrato del sector:</label> <input type="text"
-                                             class="form-control" id="stratum" name="stratum" />
+        <label for="stratum">Estrato del sector:</label> <br>
+		<input type="checkbox" name="stratum" value="1">1<br>
+		<input type="checkbox" name="stratum" value="2">2<br>
+		<input type="checkbox" name="stratum" value="3">3<br>
+		<input type="checkbox" name="stratum" value="4">4<br>
+		<input type="checkbox" name="stratum" value="5">5<br>
+		<input type="checkbox" name="stratum" value="6">6<br> 
     </div>
 
 </form>
+
+   <button ng-click="registerParking()"> Registrar Parqueadero </button>
+   
+   <div ng-show="!authenticated">
+   	<p>Primero debe autenticarse</p>
+   </div>
 
 </div>
