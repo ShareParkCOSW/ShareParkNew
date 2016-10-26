@@ -9,7 +9,7 @@ angular.module('myApp.viewCP', ['ngRoute'])
   });
 }])
 
-.controller('ViewCPCtrl', ['$scope','getParkings', function($scope, getParkings) {
+.controller('ViewCPCtrl', ['$scope','parkings', function($scope, parkings) {
             getParkings.get(function(data){
                             $scope.parkList=data;
             });

@@ -36,6 +36,18 @@ public class VehicleServicesImpl1 implements VehicleServices{
         return us.getUser(id).getVehicles();
     }
 
+    @Override
+    public Vehicle getVehicle(String plate) {
+        Vehicle ans=null;
+        for (Vehicle u:vehicles) {
+            if(u.getPlate().equals(plate)){
+                ans=u;
+                break;
+            }
+        }
+        return ans;
+    }
+
     /*@Override
     public void deletVehicle(Vehicle v) {
         vehicles.remove(v);

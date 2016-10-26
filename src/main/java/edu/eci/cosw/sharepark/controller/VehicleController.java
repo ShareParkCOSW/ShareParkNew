@@ -19,7 +19,7 @@ import org.springframework.http.ResponseEntity;
  * @author felipe
  */
 @RestController
-@RequestMapping("/vehicles")
+@RequestMapping("/vehiculos")
 public class VehicleController {
     
     @Autowired
@@ -35,11 +35,16 @@ public class VehicleController {
         return services.getVehicles();
     }
     
-    @RequestMapping(value = "/{iduser}", method = RequestMethod.GET)
-    public List<Vehicle> getVehicleUserId(@PathVariable("iduser") Integer iduser){
+    @RequestMapping(value = "/usuario/{iduser}", method = RequestMethod.GET)
+    public List<Vehicle> getVehiclesByUserId(@PathVariable("iduser") Integer iduser){
         return services.getVehicleUserId(iduser);
     }
-    
+
+    @RequestMapping(value = "/{plate}", method = RequestMethod.GET)
+    public Vehicle getOneVehicle(@PathVariable("plate") String plate){
+        return services.getVehicle(plate);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> postParking(@RequestBody(required = true) Vehicle v){
         services.addVehicle(v);

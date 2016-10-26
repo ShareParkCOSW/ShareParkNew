@@ -13,6 +13,7 @@ public interface VehicleServices {
     public List<Vehicle> getVehicles();
     public void addVehicle(Vehicle v);
     public List<Vehicle> getVehicleUserId(Integer id);
-    //public void deletVehicle(Vehicle v);
+    public Vehicle getVehicle(String plate);
+    //public void deleteVehicle(Vehicle v);
     
 }

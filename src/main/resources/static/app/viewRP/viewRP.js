@@ -9,7 +9,7 @@ angular.module('myApp.viewRP', ['ngRoute'])
   });
 }])
 
-.controller('ViewRPCtrl', ['$scope','postParking', function($scope, postParking) {
+.controller('ViewRPCtrl', ['$scope','parkings', function($scope, parkings) {
 
     $scope.ownerId="";
     $scope.covert="";
@@ -27,9 +27,9 @@ angular.module('myApp.viewRP', ['ngRoute'])
 
     $scope.registerParking= function(){
 
-        var newitem={"ownerId":$scope.ownerId,"covert":$scope.covert,"home":$scope,home,
-                      "height":$scope.height,"width":$scope.width,"length":$scope,length,
-                      "available":$scope.available,"serviceStart":$scope.serviceStart,"availableFinish":$scope,availableFinish,
+        var newitem={"ownerId":$scope.ownerId,"covert":$scope.covert,"home":$scope.home,
+                      "height":$scope.height,"width":$scope.width,"length":$scope.length,
+                      "available":$scope.available,"serviceStart":$scope.serviceStart,"availableFinish":$scope.availableFinish,
                       "costMinute":$scope.costMinute,"address":$scope.address,"stratum":$scope.stratum};
 
         postParking.save(newitem,function(){

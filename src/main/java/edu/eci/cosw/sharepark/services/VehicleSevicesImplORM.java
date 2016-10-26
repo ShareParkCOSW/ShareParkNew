@@ -62,6 +62,13 @@ public class VehicleSevicesImplORM implements VehicleServices{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Vehicle getVehicle(String plate) {
+        SessionFactory sf=getSessionFactory();
+        Session se=sf.openSession();
+        Transaction tx=se.beginTransaction();
+        return (Vehicle) se.load("edu.eci.cosw.sharepark.entities.Vehicle", plate);}
+
     /*@Override
     public void deletVehicle(Vehicle v) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
