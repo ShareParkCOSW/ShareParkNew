@@ -2076,7 +2076,16 @@
 		padding: 0.75em 1em;
 	}
 
-	input[type="checkbox"],
+	input[type="checkbox"] {
+        -moz-appearance: checkbox; -webkit-appearance: checkbox;
+        margin-left:3px; border:0;
+        vertical-align: middle;
+        top: -1px;bottom: 1px;
+        *overflow: hidden;
+        box-sizing: border-box; /* 1 */
+        *height: 13px; /* Removes excess padding in IE 7 */
+        *width: 13px;
+        backgorund: #ffffff; },
 	input[type="radio"] {
 		-moz-appearance: none;
 		-webkit-appearance: none;

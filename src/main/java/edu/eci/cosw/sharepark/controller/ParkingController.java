@@ -30,6 +30,19 @@ public class ParkingController {
         return services.getParkings();
     }
 
+    @RequestMapping(value = "/{idparking}/exists", method = RequestMethod.GET)
+    public ResponseEntity<?> parkingExist(@PathVariable("idparking") String idparking){
+        List<Parking> parkings=services.getParkings();
+        ResponseEntity<?> ans= new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        for (Parking p:parkings) {
+            if(p.getAddress().equals(idparking)){
+                ans=new ResponseEntity<>(p, HttpStatus.ACCEPTED);
+                break;
+            }
+        }
+        return ans;
+    }
+
     @RequestMapping(value = "/{iduser}", method = RequestMethod.GET)
     public List<Parking> getParkingsByUserID(@PathVariable("iduser") Integer iduser){
         return services.getParkingsByUserId(iduser);

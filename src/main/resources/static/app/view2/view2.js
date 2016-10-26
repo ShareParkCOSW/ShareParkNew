@@ -23,12 +23,6 @@ angular.module('myApp.view2', ['ngRoute','ngResource'])
                         "password":null};
 
         $scope.registrarUser = function(){
-            /**
-            user.get({iduser:""+$scope.userId}, function(data){
-                $scope.userN=data;
-                console.info($scope.userN);
-            });
-            */
             user.get({iduser:""+$scope.userId})
             .$promise.then(
                     //success

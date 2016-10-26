@@ -10,7 +10,7 @@ angular.module('myApp.viewCP', ['ngRoute'])
 }])
 
 .controller('ViewCPCtrl', ['$scope','parkings', function($scope, parkings) {
-            getParkings.get(function(data){
+            parkings.get(function(data){
                             $scope.parkList=data;
             });
 }]);

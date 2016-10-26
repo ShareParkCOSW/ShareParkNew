@@ -18,12 +18,12 @@
         </tr>
         <tr ng-repeat="todo in parkList">
             <td>{{todo.owner_id}}</td>
-            <td>{{todo.covert}}</td>
-            <td>{{todo.home}}</td>
+            <td><input type="checkbox" ng-model="todo.covert" disabled/></td>
+            <td><input type="checkbox" ng-model="todo.home" disabled/></td>
             <td>{{todo.height}}</td>
             <td>{{todo.width}}</td>
             <td>{{todo.length}}</td>
-            <td>{{todo.available}}</td>
+            <td><input type="checkbox" ng-model="todo.available" disabled/></td>
             <td>{{todo.availableFinish}}</td>
             <td>{{todo.costMinute}}</td>
             <td>{{todo.address}}</td>
@@ -31,7 +31,4 @@
         </tr>
         </tbody>
     </table>
-</div>
-<div ng-show="!authenticated">
-    <p>Primero debe autenticarse</p>
 </div>
