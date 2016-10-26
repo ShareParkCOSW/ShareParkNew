@@ -10,8 +10,6 @@ angular.module('myApp', [
     'myApp.viewCP',
     'myApp.viewRV',
     'services.factory',
-    'services.parking',
-    'services.vehicles',
     'myApp.version'
 ]).
 config(['$locationProvider','$httpProvider', '$routeProvider', function($locationProvider, $httpProvider, $routeProvider) {

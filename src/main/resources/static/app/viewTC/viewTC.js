@@ -9,31 +9,55 @@ angular.module('myApp.viewTC', ['ngRoute'])
   });
 }])
 
-.controller('ViewTCCtrl', ['$scope','$rootScope','$http','$resource', function($scope, $rootScope, $http, $resource) {
-    $scope.newCard=false;
+.controller('ViewTCCtrl', ['$scope','$rootScope','$http','$resource','creditCardById','creditCards','user', function($scope, $rootScope, $http, $resource,creditCardById, creditCards,user) {
+
     $scope.numTC=null;
     $scope.fechaVen="";
     $scope.cvv="";
-    $scope.ccN={"cardNumber":null,"expirationDate":null,"cvcCode":null};
+    $scope.userId=null;
 
 
     $scope.addCreditCard = function(){
-
-        infoCCs.get({idCC:""+$scope.numTC}, function(data){
-                $scope.ccN=data;
-                console.info($scope.ccN);
-                });
-        if ($scope.ccN.cardNumber==null){
-            var newitem={"cardNumber":$scope.numTC,"expirationDate":$scope.fechaVen,"cvcCode":$scope,cvv};
-            infoCCs.save(newitem,function(){});
-        }else{
-            console.info("La tarjeta de crédito ya existe!!!");
-            $scope.newCard=true;
-            $rootScope.valide=false;
-        }
-        };
-
-
-
+        $scope.busy=true;
+        $scope.venc=($scope.fechaVen.getMonth()+1)+"/"+($scope.fechaVen.getFullYear().toString()).slice(2,4);
+        var newitem={"cardNumber":$scope.numTC,"expirationDate":$scope.venc,"cvcCode":$scope.cvv, "owner_id":$scope.userId};
+         user.get({iduser:""+$scope.userId})
+             .$promise.then(
+                     //success
+                     function( value ){
+                         creditCardById.get({cardNumber:""+$scope.numTC})
+                         .$promise.then(
+                                 //success
+                                 function( value ){
+                                     alert("Ya existe una tarjeta de credito con numero: "+$scope.numTC+"!!!");
+                                     $scope.busy=false;
+                                 },
+                                 //error
+                                 function( error ){
+                                     creditCards.save(newitem)
+                                     .$promise.then(
+                                         function(value){
+                                             alert("La tarjeta de credito fue registrada satisfactoriamente!!!");
+                                             $scope.numTC=null;
+                                             $scope.fechaVen="";
+                                             $scope.cvv="";
+                                             $scope.userId=null;
+                                             $scope.busy=false;
+                                         },
+                                         function(error){
+                                             alert("La tarjeta de credito no se pudo registrar debido a inconsistencia en los datos!!!");
+                                             $scope.busy=false;
+                                         }
+                                     );
+                                 }
+                         );
+                     },
+                     //error
+                     function( error ){
+                         alert("El ID: "+$scope.userId+" no está registrado!!!");
+                         $scope.busy=false;
+                     }
+             );
+     };
 
 }]);
