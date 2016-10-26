@@ -9,7 +9,7 @@ angular.module('myApp.viewTC', ['ngRoute'])
   });
 }])
 
-.controller('ViewTCCtrl', ['$scope','$rootScope','$http','$resource','infoCCs', function($scope, $rootScope, $http, $resource, infoCCs) {
+.controller('ViewTCCtrl', ['$scope','$rootScope','$http','$resource', function($scope, $rootScope, $http, $resource) {
     $scope.newCard=false;
     $scope.numTC=null;
     $scope.fechaVen="";
