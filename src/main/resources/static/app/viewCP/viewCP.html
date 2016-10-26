@@ -1,6 +1,6 @@
-<p>Listado de estacionamientos</p>
-
 <div ng-show="authenticated">
+    <p><b>Listado de estacionamientos</b></p>
+    <div ng-show="busy" class="loader"></div>
     <table class="table table-striped table-hover" ng-controller="ViewCPCtrl">
         <tbody>
         <tr>

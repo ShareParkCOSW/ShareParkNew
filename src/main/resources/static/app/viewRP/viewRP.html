@@ -52,5 +52,6 @@
             </div>
         </form>
     </center>
-    <button ng-click="registerParking()"> Registrar Parqueadero </button>
+    <button ng-disabled="busy" ng-click="registerParking()"> Registrar Parqueadero </button>
+    <div ng-show="busy" class="loader"></div>
 </div>

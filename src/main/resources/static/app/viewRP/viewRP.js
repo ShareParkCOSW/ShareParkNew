@@ -20,9 +20,10 @@ angular.module('myApp.viewRP', ['ngRoute'])
     $scope.costMinute="";
     $scope.address="";
     $scope.stratum=3;
-
+    $scope.busy=false;
 
     $scope.registerParking= function(){
+        $scope.busy=true;
         var newitem={"owner_id":$scope.owner_id,"covert":$scope.covert,"home":$scope.home,
                       "height":$scope.height,"width":$scope.width,"length":$scope.length,
                       "costMinute":$scope.costMinute,"address":$scope.address,"stratum":$scope.stratum};
@@ -37,16 +38,28 @@ angular.module('myApp.viewRP', ['ngRoute'])
                             //success
                             function( value ){
                                 alert("Ya existe un estacionamiento registrado en la dirección: "+$scope.address+"!!!");
+                                $scope.busy=false;
                             },
                             //error
                             function( error ){
                                 parkings.save(newitem)
                                 .$promise.then(
                                     function(value){
-                                        alert("El estacionamiento fue registrado satisfactoriamente!!!")
+                                        alert("El estacionamiento fue registrado satisfactoriamente!!!");
+                                        $scope.owner_id="";
+                                        $scope.covert=false;
+                                        $scope.home=false;
+                                        $scope.height="";
+                                        $scope.width="";
+                                        $scope.length="";
+                                        $scope.costMinute="";
+                                        $scope.address="";
+                                        $scope.stratum=3;
+                                        $scope.busy=false;
                                     },
                                     function(error){
-                                        alert("El estacionamiento no se pudo registrar debido a inconsistencia en los datos!!!")
+                                        alert("El estacionamiento no se pudo registrar debido a inconsistencia en los datos!!!");
+                                        $scope.busy=false;
                                     }
                                 );
                             }
@@ -54,7 +67,8 @@ angular.module('myApp.viewRP', ['ngRoute'])
                 },
                 //error
                 function( error ){
-                    alert("El ID: "+$scope.owner_id+" no está registrado!!!")
+                    alert("El ID: "+$scope.owner_id+" no está registrado!!!");
+                    $scope.busy=false;
                 }
         );
     }

@@ -18,16 +18,19 @@ angular.module('myApp.view2', ['ngRoute','ngResource'])
         $scope.address="";
         $scope.phone=null;
         $scope.password="";
+        $scope.busy=false;
         $scope.userN={"firstName":null,"lastName":null,
                         "id":null, "email": null, "address":null, "phone":null,
                         "password":null};
 
         $scope.registrarUser = function(){
+            $scope.busy=true;
             user.get({iduser:""+$scope.userId})
             .$promise.then(
                     //success
                     function( value ){
                         alert("Ya existe un usuario con ID: "+$scope.userId+"!!!");
+                        $scope.busy=false;
                     },
                     //error
                     function( error ){
@@ -43,6 +46,7 @@ angular.module('myApp.view2', ['ngRoute','ngResource'])
                         $scope.address="";
                         $scope.phone=null;
                         $scope.password="";
+                        $scope.busy=false;
                     }
             );
         };

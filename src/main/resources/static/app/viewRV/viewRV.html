@@ -1,16 +1,24 @@
-<p>Registro de vehículo</p>
-<div>
-  Placa : <input ng-model = "plate">
-  <br>
-  Marca : <input ng-model = "brand">
-  <br>
-  Modelo : <input ng-model = "model">
-  <br>
-  Color : <input ng-model = "color">
-  <br>
-  Tipo de vehículo : <input  ng-model = "vehicleType">
-  <br>
-  Cédula dueño : <input  ng-model = "owner_id">
-  <br>
-  <button ng-click="registrarVehicle()"> Registrar</button>
+<div ng-show="authenticated">
+  <p><b>Registro de vehículo</b></p>
+  <center>
+    <div>
+      Placa : <input maxlength="6" ng-model = "plate">
+      <br>
+      Marca : <input ng-model = "brand">
+      <br>
+      Modelo : <input ng-model = "model">
+      <br>
+      Color : <input ng-model = "color">
+      <br>
+      <label for="repeatSelect0"> Tipo de Vehiculo: </label>
+      <select id="repeatSelect0" ng-model="vehicleType">
+        <option ng-repeat="option in vehicleTypeOpt.availableOptions" value="{{option.name}}">{{option.name}}</option>
+      </select>
+      <br>
+      Cédula dueño : <input  ng-model = "owner_id" type="number">
+      <br>
+      <button ng-disabled="busy" ng-click="registrarVehicle()"> Registrar</button>
+      <div ng-show="busy" class="loader"></div>
+    </div>
+  </center>
 </div>
