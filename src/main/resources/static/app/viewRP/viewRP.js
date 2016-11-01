@@ -21,12 +21,14 @@ angular.module('myApp.viewRP', ['ngRoute'])
     $scope.address="";
     $scope.stratum=3;
     $scope.busy=false;
+    $scope.x=0.5;
+    $scope.y=0.5;
 
     $scope.registerParking= function(){
         $scope.busy=true;
         var newitem={"owner_id":$scope.owner_id,"covert":$scope.covert,"home":$scope.home,
                       "height":$scope.height,"width":$scope.width,"length":$scope.length,
-                      "costMinute":$scope.costMinute,"address":$scope.address,"stratum":$scope.stratum};
+                      "costMinute":$scope.costMinute,"address":$scope.address,"stratum":$scope.stratum, "y":$scope.y, "x":$scope.x};
 
 
         user.get({iduser:""+$scope.owner_id})
