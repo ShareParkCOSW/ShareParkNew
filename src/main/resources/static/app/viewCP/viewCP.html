@@ -1,7 +1,8 @@
 <div ng-show="authenticated">
     <p><b>Listado de estacionamientos</b></p>
     <div ng-show="busy" class="loader"></div>
-    <table class="table table-striped table-hover" ng-controller="ViewCPCtrl">
+    <br>
+    <table class="table table-striped table-hover" ng-model="parkListFiltered" ng-change="parkListFiltered">
         <tbody>
         <tr>
             <th>Identificador Dueño</th>
@@ -16,7 +17,7 @@
             <th>Dirección</th>
             <th>Estrato</th>
         </tr>
-        <tr ng-repeat="todo in parkList">
+        <tr ng-repeat="todo in parkListFiltered | filter:{available:true}">
             <td>{{todo.owner_id}}</td>
             <td><input type="checkbox" ng-model="todo.covert" disabled/></td>
             <td><input type="checkbox" ng-model="todo.home" disabled/></td>
@@ -31,4 +32,14 @@
         </tr>
         </tbody>
     </table>
+    <label><b>Filtros: </b></label>
+    <center ng-hide="busy">
+        <br>
+        <label for="covered">Cubierto</label><input id="covered" type="checkbox" ng-model="onlyCovered"/>
+        <br>
+        <label for="homed">En Casa Propia</label><input id="homed" type="checkbox" ng-model="onlyHome"/>
+        <br>
+        <button ng-click="filter()">Filtrar</button>
+        <br>
+    </center>
 </div>

@@ -26,8 +26,8 @@ public class ParkingController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Parking> getParkings(){
-        return services.getParkings();
+    public ResponseEntity<?> getParkings(){
+        return new ResponseEntity<>(services.getParkings(), HttpStatus.ACCEPTED);
     }
 
     @RequestMapping(value = "/{idparking}/exists", method = RequestMethod.GET)
