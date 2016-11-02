@@ -49,7 +49,7 @@ public class ShareParkApplication {
 					.httpBasic()
 					.and()
 					.authorizeRequests()
-					.antMatchers("/app/**","/logout","/login","/usuarios/**").permitAll()
+					.antMatchers("/app/**","/logout","/login","/usuarios/**","/parkings/**","/tarjetas/**", "/vehiculos/**").permitAll()
 					.anyRequest().authenticated().and()
 					.logout().logoutSuccessUrl("/")
 					.and().csrf()
