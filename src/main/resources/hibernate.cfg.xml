@@ -4,22 +4,19 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10309561?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">sql10309561</property>
-    <property name="hibernate.connection.password">v8gG8vYc7T</property>
+    <property name="hibernate.connection.url">jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9140585?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">sql9140585</property>
+    <property name="hibernate.connection.password">reNk6lIN88</property>
 
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <property name="use_sql_comments">true</property>
-    <mapping class="project.certificados.entities.Admin"/>
-    <mapping class="project.certificados.entities.Area"/>
-    <mapping class="project.certificados.entities.Asignatura"/>
-    <mapping class="project.certificados.entities.Calificacion"/>
-    <mapping class="project.certificados.entities.Estudiante"/>
-    <mapping class="project.certificados.entities.Funcionario"/>
-    <mapping class="project.certificados.entities.Informe"/>
-    <mapping class="project.certificados.entities.Rol"/>
-    <mapping class="project.certificados.entities.TipoDeIdentificacion"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.CreditCard"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.Parking"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.User"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.Vehicle"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.Calification"/>
+    <mapping class="edu.eci.cosw.sharepark.entities.Request"/>
   </session-factory>
     
 </hibernate-configuration>
