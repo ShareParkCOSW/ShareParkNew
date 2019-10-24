@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>edu.eci.cosw.sharepark</groupId>
-	<artifactId>SharePark</artifactId>
+	<groupId>project.certificados.entities</groupId>
+	<artifactId>Certificados</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>SharePark</name>
+	<name>Certificados</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
