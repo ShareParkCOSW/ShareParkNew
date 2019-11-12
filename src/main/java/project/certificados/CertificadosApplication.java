@@ -25,12 +25,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @SpringBootApplication
-//@EnableJpaRepositories("edu.eci.cosw.sharepark.repositories")
-@EntityScan("edu.eci.cosw.sharepark.entities")
-public class ShareParkApplication {
+//@EnableJpaRepositories("project.certificados.repositories")
+@EntityScan("project.certificados.entities")
+public class CertificadosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShareParkApplication.class, args);
+		SpringApplication.run(CertificadosApplication.class, args);
 	}
 
 	@Configuration
@@ -49,7 +49,7 @@ public class ShareParkApplication {
 					.httpBasic()
 					.and()
 					.authorizeRequests()
-					.antMatchers("/app/**","/logout","/login","/usuarios/**","/parkings/**","/tarjetas/**", "/vehiculos/**").permitAll()
+					.antMatchers("/app/**","/logout","/login","/admins/**","/areas/**","/asignaturas/**", "/calificaciones/**","/estudiantes/**","/funcionarios/**","/informes/**","/roles/**","/tiposdeidentificacion/**").permitAll()
 					.anyRequest().authenticated().and()
 					.logout().logoutSuccessUrl("/")
 					.and().csrf()

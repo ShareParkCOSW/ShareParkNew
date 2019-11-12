@@ -1,0 +1,101 @@
+<div ng-controller="TemplateHomeCtrl">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Sistema de Certificados</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li><a ng-click="goPerfil()"><i class="fa fa-user fa-fw"></i> Perfil </a>
+            </li>
+            <li><a ng-click="goLogout()"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
+            </li>
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a ng-click="goHome()"><i class="fa fa-home fa-fw"></i>Inicio</a>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-book fa-fw"></i> Informes </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a ng-click="goConsultarInforme()">Consultar informe</a>
+                            </li>
+                            <li>
+                                <a ng-click="goCrearInforme()">Crear nuevo informe</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-user fa-fw"></i> Estudiantes </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a ng-click="goCrearEstudiante()">Crear nuevo estudiante</a>
+                            </li>
+                            <li>
+                                <a ng-click="goActualizarEstudiante()">Actualizar estudiante existente</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-users fa-fw"></i> Funcionario </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a ng-click="goCrearFuncionario()">Crear nuevo funcionario</a>
+                            </li>
+                            <li>
+                                <a ng-click="goActualizarFuncionario()">Actualizar funcionario existente</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-tasks fa-fw"></i> Áreas </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a ng-click="goCrearArea()">Crear nueva área</a>
+                            </li>
+                            <li>
+                                <a ng-click="goActualizarArea()">Actualizar área existente</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-align-left fa-fw"></i> Asignatura </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a ng-click="goCrearAsignatura()">Crear nueva asignatura</a>
+                            </li>
+                            <li>
+                                <a ng-click="goActualizarAsignatura()">Actualizar asignatura existente</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-credit-card fa-fw"></i> Tipo de identificación </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a ng-click="goCrearTipoId()">Crear nuevo Tipo de identificación</a>
+                            </li>
+                            <li>
+                                <a ng-click="goActualizarTipoId()">Actualizar Tipo de identificación existente</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+</div>

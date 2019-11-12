@@ -1,0 +1,205 @@
+<div ng-include="'/app/TemplateHome/TemplateHome.html'"></div>
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Registra los datos del nuevo informe</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label>  Estudiante </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ng-form name="formEstudiante">
+                                    <div class="form-group">
+                                        <label>  Tipo de identificación </label>
+                                        <select ng-required="true" ng-model="tipoDeIdentificacion" required>
+                                            <option ng-repeat="x in tiposId" value="{{x.value}}">{{x.label}}</option>
+                                        </select>
+                                        <br><br>
+                                        <label> Numero de identificación </label>
+                                        <br><br>
+                                        <input ng-required="true" type="text" ng-model="numeroDeIdentificacion">
+                                        <br><br>
+                                    </div>
+                                    <div ng-show="busy" class="loader"></div>
+                                </ng-form>
+                                <div style="text-align: right;">
+                                    <button ng-disabled="busy" type="submit" class="btn btn-lg btn-info" ng-click="findEstudiante()">Siguiente</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                <div class="panel panel-default" ng-show="showBasic">
+                    <div class="panel-heading">
+                        <label>  Información básica </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ng-form name="formInfo">
+                                    <div class="form-group">
+                                        <label> Año </label>
+                                        <br><br>
+                                        <input type="number" ng-model="anio" ng-required="true" required maxlength="4" min="0" max="9999">
+                                        <br><br>
+                                        <label> Curso </label>
+                                        <br><br>
+                                        <input ng-required="true" type="text" ng-model="curso">
+                                        <br><br>
+                                        <label> Jornada </label>
+                                        <br><br>
+                                        <input ng-required="true" type="text" ng-model="jornada">
+                                        <br><br>
+                                        <label> Observaciones </label>
+                                        <br><br>
+                                        <input type="text" ng-model="observaciones">
+                                        <br><br>
+                                        <label>  Director(a) de curso </label>
+                                        <select ng-model="directordecurso" required>
+                                            <option ng-repeat="x in directoresdecursoId" value="{{x.value}}">{{x.label}}</option>
+                                        </select>
+                                        <br><br>
+                                        <label>  Rector(a) </label>
+                                        <select ng-required="true" ng-model="rector" required>
+                                            <option ng-repeat="x in rectoresId" value="{{x.value}}">{{x.label}}</option>
+                                        </select>
+                                        <br><br>
+                                        <label>  Secretario(a) </label>
+                                        <select ng-required="true" ng-model="secretario" required>
+                                            <option ng-repeat="x in secretariosId" value="{{x.value}}">{{x.label}}</option>
+                                        </select>
+                                        <br><br>
+                                    </div>
+                                    <div ng-show="busy" class="loader"></div>
+                                </ng-form>
+                                <div style="text-align: right;">
+                                    <button ng-disabled="busy" type="submit" class="btn btn-lg btn-info" ng-click="validateBasic()">Siguiente</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                <div class="panel panel-default" ng-show="showCalificaciones">
+                    <div class="panel-heading">
+                        <label>  Calificaciones </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div ng-repeat="calificacion in calificaciones">
+                                    <div style="text-align: left;">
+                                        <p class="text-primary">Calificación {{$index+1}}</p>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <button type="button" class="btn btn-default btn-circle" ng-click="eliminarCalficacion($index)"><i class="fa fa-times fa-fw"></i></button>
+                                    </div>
+                                    <form rol="form" style="border: #9d9d9d; border-style: none none dotted none; border-bottom-width: thin;">
+                                        <div class="form-group">
+                                            <label>  Área </label>
+                                            <select ng-model="calificacion.idArea" required ng-change="loadAsignaturas($index,calificacion.idArea)">
+                                                <option ng-repeat="x in areasId" value="{{x.value}}">{{x.label}}</option>
+                                            </select>
+                                            <br><br>
+                                            <label>  Asignatura </label>
+                                            <select ng-model="calificacion.idAsignatura" required>
+                                                <option ng-repeat="x in calificacion.asignaturasId" value="{{x.value}}">{{x.label}}</option>
+                                            </select>
+                                            <br><br>
+                                            <label> Nota </label>
+                                            <br><br>
+                                            <input ng-required="true" type="text" ng-model="calificacion.nota">
+                                            <br><br>
+                                        </div>
+                                        <div ng-show="busy" class="loader"></div>
+                                    </form>
+                                    <br><br>
+                                </div>
+                                <p>
+                                    <button ng-disabled="busy" type="submit" class="btn btn-outline btn-info" ng-click="agregarCalficacion()">Agregar Calificación</button>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.row (nested) -->
+                        <div style="text-align: right;">
+                            <button ng-disabled="busy" type="submit" class="btn btn-lg btn-info" ng-click="agregarRecuperaciones()">Siguiente</button>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                <div class="panel panel-default" ng-show="showRecuperaciones">
+                    <div class="panel-heading">
+                        <label>  Recuperaciones </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div ng-repeat="recuperacion in recuperaciones">
+                                    <div style="text-align: left;">
+                                        <p class="text-primary">Recuperación {{$index+1}}</p>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <button type="button" class="btn btn-default btn-circle" ng-click="eliminarRecuperacion($index)"><i class="fa fa-times fa-fw"></i></button>
+                                    </div>
+                                    <form rol="formRecuperaciones" style="border: #9d9d9d; border-style: none none dotted none; border-bottom-width: thin;">
+                                        <div class="form-group">
+                                            <label>  Área </label>
+                                            <select ng-model="recuperacion.idArea" required ng-change="loadAsignaturasRecuperacion($index,recuperacion.idArea)">
+                                                <option ng-repeat="x in areasId" value="{{x.value}}">{{x.label}}</option>
+                                            </select>
+                                            <br><br>
+                                            <label>  Asignatura </label>
+                                            <select ng-model="recuperacion.idAsignatura" required>
+                                                <option ng-repeat="x in recuperacion.asignaturasId" value="{{x.value}}">{{x.label}}</option>
+                                            </select>
+                                            <br><br>
+                                            <label> Nota </label>
+                                            <br><br>
+                                            <input ng-required="true" type="text" ng-model="recuperacion.nota">
+                                            <br><br>
+                                            <label> Fecha </label>
+                                            <br><br>
+                                            <input ng-required="true" type="date" ng-model="recuperacion.fecha">
+                                            <br><br>
+                                        </div>
+                                        <div ng-show="busy" class="loader"></div>
+                                    </form>
+                                    <br><br>
+                                </div>
+                                <p>
+                                    <button ng-disabled="busy" type="submit" class="btn btn-outline btn-info" ng-click="agregarRecuperacion()">Agregar Recuperación</button>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                <p>
+                    <button ng-disabled="busy" type="submit" class="btn btn-lg btn-success" ng-click="save()">Guardar</button>
+                </p>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
