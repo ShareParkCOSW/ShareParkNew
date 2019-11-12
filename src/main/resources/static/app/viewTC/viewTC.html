@@ -1,0 +1,31 @@
+<div ng-show="authenticated">
+    <p><b>Registro de Tarjeta de Crédito</b></p>
+
+
+<form role="form">
+
+    <div class="form-group">
+        <label for="numTC">Número de Tarjeta de Crédito:</label> <input type="number"
+                                                       class="form-control" id="numTC" name="numTC" ng-model="numTC"/>
+    </div>
+
+    <div class="form-group">
+        <label for="fechaVen">Fecha de Vencimiento:</label> <input type="month"
+                                                       class="form-control" id="fechaVen" name="fechaVen" ng-model="fechaVen"/>
+    </div>
+
+    <div class="form-group">
+        <label for="cvv">CVV:</label> <input type="number"
+                                                       class="form-control" id="cvv" name="cvv" ng-model="cvv" maxlength="3"/>
+    </div>
+
+    <div class="form-group">
+        <label for="CedulaDueño">Cedula Dueño:</label> <input type="number"
+                                             class="form-control" id="CedulaDueño" name="CedulaDueño" ng-model="userId"/>
+    </div>
+
+</form>
+    <button ng-disabled="busy" ng-click="addCreditCard()"> Registrar Tarjeta de Crédito </button>
+    <div ng-show="busy" class="loader"></div>
+
+</div>

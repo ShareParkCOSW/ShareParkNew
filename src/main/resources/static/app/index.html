@@ -1,82 +1,54 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-chart lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-chart lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-chart lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>SharePark</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
-  <!-- Bootstrap Core CSS -->
-  <link href="/app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<ul class="menu">
+  <li ng-show="!authenticated"><a href="#!/loginView">Iniciar Sesion</a></li>
+  <li ng-show="!authenticated"><a href="#!/view2">Registro de Usuarios</a></li>
+  <li ng-show="authenticated"><a href="#!/viewCP">Consulta de Estacionamientos</a></li>
+  <li ng-show="authenticated"><a href="#!/viewTC">Registro de tarjeta de Credito</a></li>
+  <li ng-show="authenticated"><a href="#!/viewRP">Registro de Estacionamiento</a></li>
+  <li ng-show="authenticated"><a href="#!/viewRV">Registro de Vehículo</a></li>
+  <li ng-show="authenticated"><a ng-controller="LogoutCtrl" ng-click="logout()">Cerrar Sesion</a></li>
+</ul>
 
-  <!-- MetisMenu CSS -->
-  <link href="/app/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
-  <!-- Custom CSS -->
-  <link href="/app/dist/css/sb-admin-2.css" rel="stylesheet">
+<div ng-view></div>
 
-  <!-- Custom Fonts -->
-  <link href="/app/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <script src="/app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+<div>SharePark: v<span app-version></span></div>
 
-  <!-- HTML5 Shim and Respond.chart IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.chart doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  </head>
-  <body>
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
-  <div ng-view></div>
-
-  <div>Cliente Multiple app: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.chart"></script>
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="app.js"></script>
-  <script src="/app/dist/js/sb-admin-2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script><!-- jQuery -->
-  <script src="/app/vendor/jquery/jquery.min.js"></script>
-  <script src="loginView/loginView.js"></script>
-  <script src="Register/Register.js"></script>
-  <script src="Home/Home.js"></script>
-  <script src="TemplateHome/TemplateHome.js"></script>
-  <script src="CrearEstudiante/CrearEstudiante.js"></script>
-  <script src="ActualizarEstudiante/ActualizarEstudiante.js"></script>
-  <script src="CrearFuncionario/CrearFuncionario.js"></script>
-  <script src="ActualizarFuncionario/ActualizarFuncionario.js"></script>
-  <script src="CrearArea/CrearArea.js"></script>
-  <script src="ActualizarArea/ActualizarArea.js"></script>
-  <script src="CrearAsignatura/CrearAsignatura.js"></script>
-  <script src="ActualizarAsignatura/ActualizarAsignatura.js"></script>
-  <script src="CrearTipodeidentificacion/CrearTipodeidentificacion.js"></script>
-  <script src="ActualizarTipodeidentificacion/ActualizarTipodeidentificacion.js"></script>
-  <script src="ActualizarAdmin/ActualizarAdmin.js"></script>
-  <script src="CrearInforme/CrearInforme.js"></script>
-  <script src="Services/services.js"></script>
-
-  <!-- Bootstrap Core JavaScript -->
-  <script src="/app/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <!-- Metis Menu Plugin JavaScript -->
-  <script src="/app/vendor/metisMenu/metisMenu.min.js"></script>
-
-
-  </body>
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="app.js"></script>
+<script src="loginView/loginView.js"></script>
+<script src="view2/view2.js"></script>
+<script src="viewTC/viewTC.js"></script>
+<script src="viewRP/viewRP.js"></script>
+<script src="viewCP/viewCP.js"></script>
+<script src="viewRV/viewRV.js"></script>
+<script src="Services/services.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+</body>
 </html>

@@ -9,34 +9,40 @@ angular.module('myApp.loginView', ['ngRoute'])
   });
 }])
 
-.controller('LoginViewCtrl', ['$scope', '$rootScope','$http','$resource', 'adminUsername','$location', function($scope, $rootScope,$http,$resource,adminUsername,$location) {
+.controller('LoginViewCtrl', ['$scope','$rootScope','$http','$location', function($scope, $rootScope, $http, $location) {
 
-    $scope.username="";
-    $scope.password="";
+    var authenticate = function (credentials, callback) {
 
-    $scope.login = function(){
-        $scope.busy=true;
-        adminUsername.get({username:""+$scope.username})
-            .$promise.then(
-            //success
-            function( value ){
-                if(value.password==$scope.password){
-                    $rootScope.idAdminGlobal=value.idAdmin;
-                    $location.path("Home");
-                }else{
-                    alert("La contraseña no es correcta");
-                }
-                $scope.busy=false;
-            },
-            //error
-            function( error ){
-                alert("El nombre de usuario no se encuentra registrado");
-                $scope.busy=false;
+    var headers = credentials ? {authorization: "Basic "
+                + btoa(credentials.username + ":" + credentials.password)
+    } : {};
+
+        $http.get('/app/user', {headers: headers}).success(function (data) {
+            if (data.name) {
+                $rootScope.authenticated = true;
+            } else {
+                $rootScope.authenticated = false;
             }
-        );
+            callback && callback();
+        }).error(function () {
+            $rootScope.authenticated = false;
+            callback && callback();
+        });
+
     };
-    
-    $scope.continueRegister= function () {
-        $location.path("Register");
-    }
+
+    authenticate();
+    $scope.credentials = {};
+    $scope.login = function () {
+        authenticate($scope.credentials, function () {
+            if ($rootScope.authenticated) {
+                $location.path("/view1");
+                $scope.error = false;
+            } else {
+                $location.path("/loginView");
+                $scope.error = true;
+                alert("Autenticación Fallida");
+            }
+        });
+    };
 }]);

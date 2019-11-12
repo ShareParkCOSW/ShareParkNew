@@ -1,0 +1,57 @@
+<div ng-show="authenticated">
+    <p><b>Formulario para registrar parqueadero</b></p>
+    <br>
+    <br>
+    <center>
+        <form>
+            <div>
+                <label for="id">Identificación Usuario:</label>
+                <input id="id" ng-model = "owner_id" type="number">
+            </div>
+            <br>
+            <div>
+                <label for="covert">El parqueadero es cubierto?</label>
+                <input type="checkbox" id="covert" ng-model="covert"/>
+            </div>
+            <br>
+            <div>
+                <label for="home">El parqueadero pertenece a una casa?</label>
+                <input type="checkbox" id="home" ng-model="home"/>
+            </div>
+            <br>
+            <div>
+                <label for="height">Altura del parqueadero:</label>
+                <input id="height" ng-model = "height" type="number">
+            </div>
+            <br>
+            <div>
+                <label for="width">Ancho del parqueadero:</label>
+                <input id="width" ng-model = "width" type="number">
+            </div>
+            <br>
+            <div>
+                <label for="length">Longitud del parqueadero:</label>
+                <input id="length" ng-model = "length" type="number">
+            </div>
+            <br>
+            <div>
+                <label for="costMinute">Costo del minuto:</label>
+                <input id="costMinute" ng-model = "costMinute" type="number">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="address">Direccion del parqueadero:</label>
+                <input id="address" ng-model = "address" type="text">
+            </div>
+            <br>
+            <div>
+                <label for="stratum">Estrato del sector:</label>
+                {{stratum}}
+                <br>
+                <input id="stratum" ng-model="stratum" type="range" min="1" max="6">
+            </div>
+        </form>
+    </center>
+    <button ng-disabled="busy" ng-click="registerParking()"> Registrar Parqueadero </button>
+    <div ng-show="busy" class="loader"></div>
+</div>
